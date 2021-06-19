@@ -234,6 +234,7 @@ if ('compilerOptions' in tsconfig && 'paths' in tsconfig.compilerOptions) {
 
 		if (config.resolve && config.resolve.alias) {
 			if (!(wpAlias in config.resolve.alias) && wpPaths.length) {
+				// @ts-ignore
 				config.resolve.alias[wpAlias] = wpPaths.length > 1 ? wpPaths : wpPaths[0];
 			}
 		}
@@ -261,6 +262,7 @@ if (useBabel && (isProduction || useBabelInDevelopment)) {
 		}
 	};
 
+	// @ts-ignore
 	config.module?.rules.unshift({
 		test: /\.(?:m?js|ts)$/,
 		include: [
@@ -273,6 +275,7 @@ if (useBabel && (isProduction || useBabelInDevelopment)) {
 		use: loader,
 	});
 
+	// @ts-ignore
 	const svelte = config.module?.rules.find(rule => {
 		if (typeof rule !== 'object') return false;
 		else if (Array.isArray(rule.use))
