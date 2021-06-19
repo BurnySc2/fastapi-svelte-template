@@ -1,13 +1,16 @@
 <script lang="ts">
+    import TodoPage from "./components/TodoPage.svelte"
+
     let name: string = "world"
 </script>
 
 <main>
     <h1>Hello {name}!</h1>
     <p>
-        Visit the <a class="bg-green-200" href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-        how to build Svelte apps.
+        Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte
+        apps.
     </p>
+    <TodoPage defaultText="My other text" />
 </main>
 
 <style lang="scss">

@@ -64,8 +64,8 @@ poetry run uvicorn main:app --host 0.0.0.0 --port 5000
 # Autoformatting
 
 ```
-npx prettier --write "src/**/*.tsx"
-black --line-length 120 .
+npx prettier --write "src/**/*.{ts,tsx,svelte}"
+yapf ./**/*.py -i
 ```
 
 # Run pre commit hooks
