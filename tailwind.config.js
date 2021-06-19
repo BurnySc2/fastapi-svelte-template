@@ -3,7 +3,7 @@ module.exports = {
     purge: [],
     purge: {
       content: [
-        "./src/**/*.{html,svelte}",
+        "./src/**/*.svelte",
         ],
         enabled: process.env.DEVELOPMENT !== "true" // disable purge in dev
     },
