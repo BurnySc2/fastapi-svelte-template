@@ -1,5 +1,5 @@
 {
-	"name": "BurnySc2 Svelte Template",
+	"name": "burnysc2-svelte-template",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
