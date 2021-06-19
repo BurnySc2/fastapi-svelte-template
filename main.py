@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 # pylint: disable=E0611
 from pydantic import BaseModel
 from loguru import logger
@@ -11,6 +12,21 @@ from typing import List, Dict, Optional
 
 app = FastAPI()
 db: Optional[sqlite3.Connection] = None
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -93,10 +109,9 @@ def create_database_if_not_exist():
     todos_db = Path(__file__).parent / "data" / "todos.db"
     if not todos_db.is_file():
         os.makedirs(todos_db.parent, exist_ok=True)
-        if db:
-            db = sqlite3.connect(todos_db)
-            db.execute("CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT)")
-            db.commit()
+        db = sqlite3.connect(todos_db)
+        db.execute("CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, task TEXT)")
+        db.commit()
         logger.info(f"Created new database: {todos_db.name}")
     else:
         db = sqlite3.connect(todos_db)
