@@ -13,6 +13,7 @@
                 text: newTodoText,
             },
         ]
+        newTodoText = ""
     }
 
     let removeTodo = (index: number) => {
@@ -36,8 +37,8 @@
             placeholder="My new todo item"
         />
         <button class="border-2 my-2 mx-1" on:click={addTodo}>Submit</button>
-        <button class="border-2 my-2 mx-1">SubmitBody</button>
-        <button class="border-2 my-2 mx-1">SubmitModel</button>
+        <!-- <button class="border-2 my-2 mx-1">SubmitBody</button>
+        <button class="border-2 my-2 mx-1">SubmitModel</button> -->
     </div>
     {#each cards as { text }, i}
         <Card cardText={text} index={i} {removeTodo} />
