@@ -1,12 +1,20 @@
 module.exports = {
-    future: {
-        // removeDeprecatedGapUtilities: true,
-        // purgeLayersByDefault: true,
+    purge: {
+      enabled: !process.env.ROLLUP_WATCH,
+      content: ['./public/index.html', './src/**/*.svelte'],
+      options: {
+        defaultExtractor: content => [
+          ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
+          ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
+        ],
+      },
     },
-    purge: [],
+    darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+      extend: {},
     },
-    variants: {},
+    variants: {
+      extend: {},
+    },
     plugins: [],
-}
+  }
