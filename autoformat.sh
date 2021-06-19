@@ -1,2 +1,2 @@
-npx prettier --write "src/**/*.{ts,tsx}"
-black --line-length 120 .
+npx prettier --write "src/**/*.{ts,tsx,svelte}"
+yapf ./**/*.py -i
