@@ -135,6 +135,7 @@ dmypy.json
 /node_modules
 /.pnp
 .pnp.js
+/public/build/
 
 # testing
 /coverage
@@ -153,7 +154,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/.idea
+.vscode
+.idea
 /data
 
 src/index.css
+

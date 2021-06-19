@@ -7,6 +7,9 @@
 
 # Installation
 
+You can clone a fresh template with
+`npx degit sveltejs/template my-svelte-project`
+
 Install node and python 3.7+
 
 ```
@@ -18,7 +21,7 @@ npm install
 # Development
 
 ```
-npm run start
+npm run dev
 poetry run uvicorn main:app --reload --host 0.0.0.0 --port 5000
 ```
 
@@ -64,3 +67,6 @@ poetry run uvicorn main:app --host 0.0.0.0 --port 5000
 npx prettier --write "src/**/*.tsx"
 black --line-length 120 .
 ```
+
+# Run pre commit hooks
+`poetry run pre-commit run --all-files`
