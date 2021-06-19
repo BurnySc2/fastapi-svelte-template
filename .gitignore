@@ -14,6 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
+lib/
 lib64/
 parts/
 sdist/
@@ -155,9 +156,7 @@ yarn-error.log*
 
 .vscode
 .idea
-
-data
-.svelte-kit
+/data
 
 src/index.css
 

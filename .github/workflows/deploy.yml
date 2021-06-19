@@ -59,4 +59,4 @@ jobs:
                   ACCESS_TOKEN: ${{ secrets.GITHUB_PAGES_TOKEN }}
                   BASE_BRANCH: master # The branch the action should deploy from.
                   BRANCH: gh-pages # The branch the action should deploy to.
-                  FOLDER: .svelte-kit/output/client/_app # The folder the action should deploy.
+                  FOLDER: public # The folder the action should deploy.
