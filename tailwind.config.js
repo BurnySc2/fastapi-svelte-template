@@ -1,12 +1,15 @@
 module.exports = {
-    future: {
-        // removeDeprecatedGapUtilities: true,
-        // purgeLayersByDefault: true,
-    },
+    // mode: 'jit',
     purge: [],
+    purge: {
+      content: [
+        "./src/**/*.{html,svelte}",
+        ],
+        enabled: process.env.DEVELOPMENT !== "true" // disable purge in dev
+    },
     theme: {
-        extend: {},
+      extend: {},
     },
     variants: {},
     plugins: [],
-}
+  };
