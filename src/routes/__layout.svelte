@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Header from '$lib/Header/index.svelte';
-	import '../app.css';
+	import "../app.postcss";
 </script>
 
-<Header />
+<Header>
 
 <main>
-	<slot />
-</main>
+	<slot>
+</slot></main>
 
 <footer>
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
@@ -43,3 +43,5 @@
 		}
 	}
 </style>
+</Header>
+<slot></slot>
