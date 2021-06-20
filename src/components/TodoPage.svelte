@@ -80,7 +80,7 @@
                     new_todo: newTodoText,
                 }),
             }
-            fetch(`${api_server_ip}/api_body`, requestOptions)
+            await fetch(`${api_server_ip}/api_body`, requestOptions)
         } catch {
             localSubmit()
         }
@@ -97,7 +97,7 @@
                     todo_description: newTodoText,
                 }),
             }
-            fetch(`${api_server_ip}/api_model`, requestOptions)
+            await fetch(`${api_server_ip}/api_model`, requestOptions)
         } catch {
             localSubmit()
         }
