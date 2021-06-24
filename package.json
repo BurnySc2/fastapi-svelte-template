@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"build:dev:tailwind": "DEVELOPMENT=true tailwind build -i public/tailwind.css -o public/index.css",
-		"build:prod:tailwind": "NODE_ENV=production postcss public/tailwind.css -o public/index.css",
+		"build:prod:tailwind": "NODE_ENV=production tailwind build -i public/tailwind.css -c tailwind.config.js -o public/index.css",
 		"build": "npm run build:prod:tailwind && cross-env NODE_ENV=production webpack",
 		"dev": "npm run build:dev:tailwind && webpack serve",
 		"start": "serve public --listen 8080",
@@ -24,9 +24,6 @@
 		"css-loader": "^5.0.2",
 		"css-minimizer-webpack-plugin": "^3.0.0",
 		"mini-css-extract-plugin": "^1.3.8",
-		"postcss": "8.3",
-		"postcss-cli": "^8.3.1",
-		"postcss-loader": "^5.0.0",
 		"prettier": "^2.3.1",
 		"prettier-plugin-svelte": "^2.3.1",
 		"regenerator-runtime": "^0.13.7",
