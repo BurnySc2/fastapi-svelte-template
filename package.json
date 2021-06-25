@@ -2,7 +2,6 @@
     "name": "my-todo-list",
     "version": "0.0.1",
     "type": "module",
-    "homepage": ".",
     "scripts": {
         "dev": "svelte-kit dev",
         "build": "svelte-kit build",
