@@ -19,7 +19,6 @@
         "eslint-plugin-svelte3": "^3.2.0",
         "node-sass": "^6.0.1",
         "svelte": "^3.38.3",
-        "svelte-routing": "^1.6.0",
         "tslib": "^2.3.0"
     },
     "devDependencies": {
