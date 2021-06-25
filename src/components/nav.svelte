@@ -7,6 +7,6 @@ import { Router, Link, Route } from "svelte-routing";
     <nav class="flex justify-center w-full">
         <a class="mx-4 text-lg" href="/">Home</a>
         <Link class="mx-4 text-lg" to="about">About</Link>
-        <a class="mx-4 text-lg" href="todo">Todo</a>
+        <Route class="mx-4 text-lg" path="todo">Todo</Route>
     </nav>
 </Router>
