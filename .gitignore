@@ -143,6 +143,9 @@ dmypy.json
 # production
 /build
 
+# Svelte kit
+/.svelte-kit
+
 # misc
 .DS_Store
 .env.local
