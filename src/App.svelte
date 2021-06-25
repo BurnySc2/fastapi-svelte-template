@@ -5,11 +5,11 @@
     import Home from "./components/Home.svelte"
     import About from "./components/About.svelte"
 
-    export let url = ""
+    export let basepath = "/fastapi-svelte-template"
 </script>
 
 <main>
-    <Router {url}>
+    <Router {basepath}>
         <nav class="text-center">
             <Link to="/">Home</Link>
             <Link to="about">About</Link>
