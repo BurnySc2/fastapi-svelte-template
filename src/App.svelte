@@ -1,7 +1,7 @@
 <script lang="ts">
     import TodoPage from "./components/TodoPage.svelte"
 
-    let name: string = "world"
+    let name = "world"
 </script>
 
 <main>
@@ -12,4 +12,3 @@
     </p>
     <TodoPage defaultText="My other text" />
 </main>
-

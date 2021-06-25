@@ -147,6 +147,3 @@
         <Card cardText={card.content} index={card.id} {removeTodo} />
     {/each} -->
 </main>
-
-<style lang="scss">
-</style>

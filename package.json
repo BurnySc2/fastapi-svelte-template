@@ -3,10 +3,11 @@
     "scripts": {
         "tailwind:dev": "DEVELOPMENT=true tailwind build -i public/tailwind.css -o public/index.css -w",
         "tailwind:prod": "NODE_ENV=production tailwind build -i public/tailwind.css -c tailwind.config.js -o public/index.css",
-        "build": "npm run tailwind:prod && cross-env NODE_ENV=production webpack",
+        "build": "npm run eslint && npm run tailwind:prod && cross-env NODE_ENV=production webpack",
         "dev": "concurrently \"webpack serve\" && \"npm run tailwind:dev\"",
         "start": "serve public --listen 8080",
-        "validate": "svelte-check"
+        "validate": "svelte-check",
+        "eslint": "npx eslint **/*.svelte --max-warnings 0"
     },
     "browserslist": [
         "defaults"
@@ -41,6 +42,10 @@
         "webpack-dev-server": "^3.11.2"
     },
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.28.0",
+        "@typescript-eslint/parser": "^4.28.0",
+        "eslint": "^7.29.0",
+        "eslint-plugin-svelte3": "^3.2.0",
         "prettier": "^2.3.1",
         "prettier-plugin-svelte": "^2.3.1"
     }
