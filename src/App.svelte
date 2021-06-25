@@ -1,14 +1,26 @@
 <script lang="ts">
-    import TodoPage from "./components/TodoPage.svelte"
+    import { Router, Link, Route } from "svelte-routing"
 
-    let name = "world"
+    import TodoPage from "./components/TodoPage.svelte"
+    import Home from "./components/Home.svelte"
+    import About from "./components/About.svelte"
+
+    export let url = ""
 </script>
 
 <main>
-    <h1 class="text-center my-2">Hello {name}!</h1>
-    <p class="text-center my-2">
-        Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte
-        apps.
-    </p>
-    <TodoPage defaultText="My other text" />
+    <Router {url}>
+        <nav class="text-center">
+            <Link to="/">Home</Link>
+            <Link to="about">About</Link>
+            <Link to="todo">Todo</Link>
+        </nav>
+        <div>
+            <Route path="/"><Home /></Route>
+            <Route path="about" component={About} />
+            <Route path="todo">
+                <TodoPage defaultText="My other text" />
+            </Route>
+        </div>
+    </Router>
 </main>
