@@ -7,7 +7,9 @@
         "dev": "concurrently \"webpack serve\" \"npm run tailwind:dev\"",
         "start": "serve public --listen 8080",
         "validate": "svelte-check",
-        "eslint": "npx eslint **/*.svelte --max-warnings 0"
+        "eslint": "npx eslint **/*.svelte --max-warnings 0",
+        "e2e": "npx cypress run",
+        "ci": "start-server-and-test dev http://localhost:8080 e2e"
     },
     "browserslist": [
         "defaults"
@@ -43,11 +45,14 @@
         "webpack-dev-server": "^3.11.2"
     },
     "devDependencies": {
+        "@cypress/webpack-preprocessor": "^5.9.1",
         "@typescript-eslint/eslint-plugin": "^4.28.0",
         "@typescript-eslint/parser": "^4.28.0",
+        "cypress": "^7.6.0",
         "eslint": "^7.29.0",
         "eslint-plugin-svelte3": "^3.2.0",
         "prettier": "^2.3.1",
-        "prettier-plugin-svelte": "^2.3.1"
+        "prettier-plugin-svelte": "^2.3.1",
+        "start-server-and-test": "^1.12.5"
     }
 }

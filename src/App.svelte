@@ -5,7 +5,7 @@
 
     let url = "/"
 
-    const setUrl = (newUrl) => {
+    const setUrl = (newUrl: string) => {
         url = newUrl
     }
 </script>

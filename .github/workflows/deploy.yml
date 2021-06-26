@@ -25,8 +25,8 @@ jobs:
 
             - uses: actions/cache@v2
               with:
-                path: ~/.cache/pypoetry/virtualenvs
-                key: ${{ runner.os }}-${{ matrix.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
+                  path: ~/.cache/pypoetry/virtualenvs
+                  key: ${{ runner.os }}-${{ matrix.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
 
             - uses: actions/cache@v1
               with:
@@ -44,11 +44,11 @@ jobs:
               run: |
                   npm install
 
-            #      - name: Test with npm
-            #        run: |
-            #          npm test
+            - name: Test with npm
+              run: |
+                  npm ci
 
-            - name: Build
+            - name: Build frontend
               run: |
                   npm run build
 
