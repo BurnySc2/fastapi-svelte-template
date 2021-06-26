@@ -1,26 +1,26 @@
 <script lang="ts">
-    import { Router, Link, Route } from "svelte-routing"
-
     import TodoPage from "./components/TodoPage.svelte"
     import Home from "./components/Home.svelte"
     import About from "./components/About.svelte"
 
-    export let basepath = "/fastapi-svelte-template"
+    let url = "/"
+
+    const setUrl = (newUrl) => {
+        url = newUrl
+    }
 </script>
 
 <main>
-    <Router {basepath}>
-        <nav class="text-center">
-            <Link to="/">Home</Link>
-            <Link to="about">About</Link>
-            <Link to="todo">Todo</Link>
-        </nav>
-        <div>
-            <Route path="/"><Home /></Route>
-            <Route path="about" component={About} />
-            <Route path="todo">
-                <TodoPage defaultText="My other text" />
-            </Route>
-        </div>
-    </Router>
+    <div class="my-2 flex flex-container justify-center">
+        <button class="mx-2 p-1 border-2" on:click={() => setUrl("/")}>Home</button>
+        <button class="mx-2 p-1 border-2" on:click={() => setUrl("/about")}>About</button>
+        <button class="mx-2 p-1 border-2" on:click={() => setUrl("/todo")}>Todo</button>
+    </div>
+    {#if url === "/"}
+        <Home />
+    {:else if url === "/about"}
+        <About />
+    {:else if url === "/todo"}
+        <TodoPage defaultText="My other text" />
+    {/if}
 </main>

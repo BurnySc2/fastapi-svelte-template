@@ -1,13 +1,11 @@
 module.exports = {
     purge: {
-      content: [
-        "./src/**/*.svelte",
-        ],
-        enabled: process.env.DEVELOPMENT !== "true" // disable purge in dev
+        content: ["./src/**/*.svelte"],
+        enabled: process.env.DEVELOPMENT !== "true", // disable purge in dev
     },
     theme: {
-      extend: {},
+        extend: {},
     },
     variants: {},
     plugins: [],
-  };
+}

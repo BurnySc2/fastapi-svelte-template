@@ -1,10 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "tailwind:dev": "DEVELOPMENT=true tailwind build -i public/tailwind.css -o public/index.css -w",
+        "tailwind:dev": "DEVELOPMENT=true tailwind build -i public/tailwind.css -o public/index.css",
         "tailwind:prod": "NODE_ENV=production tailwind build -i public/tailwind.css -c tailwind.config.js -o public/index.css",
         "build": "npm run eslint && npm run tailwind:prod && cross-env NODE_ENV=production webpack",
-        "dev": "concurrently \"webpack serve\" && \"npm run tailwind:dev\"",
+        "dev": "concurrently \"webpack serve\" \"npm run tailwind:dev\"",
         "start": "serve public --listen 8080",
         "validate": "svelte-check",
         "eslint": "npx eslint **/*.svelte --max-warnings 0"
@@ -34,7 +34,6 @@
         "svelte-check": "^2.2.0",
         "svelte-loader": "^3.1.2",
         "svelte-preprocess": "^4.7.3",
-        "svelte-routing": "^1.6.0",
         "tailwindcss": "^2.2.4",
         "ts-loader": "^9.2.3",
         "ts-node": "^10.0.0",
