@@ -44,7 +44,11 @@ jobs:
               run: |
                   npm install
 
-            - name: Test with npm
+            - name: npm run unit tests
+              run: |
+                  npm run test
+
+            - name: npm run end to end tests
               run: |
                   npm run ci
 
