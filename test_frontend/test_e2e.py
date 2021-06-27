@@ -12,7 +12,7 @@ import pytest
 import random
 
 WEBSITE_IP = "http://localhost"
-WEBSITE_PORT = random.randint(2000, 65_535)
+WEBSITE_PORT = f"{random.randint(2000, 65_535)}"
 WEBSITE_ADDRESS = f"{WEBSITE_IP}:{WEBSITE_PORT}"
 WEBSERVER_PROCESS: Optional[subprocess.Popen] = None
 
@@ -27,7 +27,7 @@ def setup_module(module):
     time.sleep(0.5)
     # WEBSERVER_PROCESS = subprocess.Popen(["npm", "run", "dev"])
     # pylint: disable=R1732
-    MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve", "--port", f"{WEBSITE_PORT}"])
+    MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve", "--port", WEBSITE_PORT])
     time.sleep(5)
 
 
