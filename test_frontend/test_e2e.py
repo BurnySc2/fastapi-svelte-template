@@ -9,8 +9,11 @@ import os
 import signal
 from typing import Optional
 import pytest
+import random
 
-WEBSITE_ADDRESS = "http://localhost:8080"
+WEBSITE_IP = "http://localhost"
+WEBSITE_PORT = random.randint(2000, 65_535)
+WEBSITE_ADDRESS = f"{WEBSITE_IP}:{WEBSITE_PORT}"
 WEBSERVER_PROCESS: Optional[subprocess.Popen] = None
 
 
@@ -22,9 +25,9 @@ def setup_module(module):
     See https://docs.pytest.org/en/6.2.x/xunit_setup.html
     """
     time.sleep(0.5)
+    # WEBSERVER_PROCESS = subprocess.Popen(["npm", "run", "dev"])
     # pylint: disable=R1732
-    WEBSERVER_PROCESS = subprocess.Popen(["npm", "run", "dev"])
-    # MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve"])
+    MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve", "--port", f"{WEBSITE_PORT}"])
     time.sleep(5)
 
 
