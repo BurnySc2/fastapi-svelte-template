@@ -10,13 +10,13 @@ jobs:
             matrix:
                 os: [ubuntu-latest]
                 python-version: [3.7, 3.8, 3.9]
-                node: ["12"]
+                node: [12]
 
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
-                  node-version: "12.x"
+                  node-version: ${{ matrix.node }}
 
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v1
@@ -67,7 +67,7 @@ jobs:
             - name: Python output benchmark results
               if: matrix.python-version == '3.9'
               run: |
-                  poetry run pytest --benchmark-json output.json
+                  poetry run pytest --benchmark-only --headless --benchmark-json output.json
 
             - name: Store benchmark result
               if: matrix.python-version == '3.9'
@@ -77,8 +77,11 @@ jobs:
                 output-file-path: output.json
                 # Where the previous data file is stored
                 external-data-json-path: ./cache/benchmark-data.json
+                # GitHub API token to make a commit comment
+                github-token: ${{ secrets.GITHUB_TOKEN }}
                 # Workflow will fail when an alert happens
-                fail-on-alert: false
+                fail-on-alert: true
+                comment-always: true
 
             - name: Build frontend
               run: |

@@ -9,42 +9,47 @@ import os
 import signal
 from typing import Optional
 import pytest
+import random
 
-WEBSITE_ADDRESS = "http://localhost:8080"
-
-
-class MyBaseCase(BaseCase):
-    webserver_process: Optional[subprocess.Popen] = None
-
-    @classmethod
-    def setup_class(cls):
-        """ setup any state specific to the execution of the given class (which
-        usually contains tests).
-        See https://docs.pytest.org/en/6.2.x/xunit_setup.html
-        """
-        time.sleep(0.5)
-        # pylint: disable=R1732
-        MyTestClass.webserver_process = subprocess.Popen(["npm", "run", "dev"])
-        # MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve"])
-        time.sleep(5)
-
-    @classmethod
-    def teardown_class(cls):
-        """ teardown any state that was previously setup with a call to
-        setup_class.
-        """
-        if MyTestClass.webserver_process is not None:
-            time.sleep(0.1)
-            os.kill(MyTestClass.webserver_process.pid, signal.SIGTERM)
-            time.sleep(0.1)
-            if MyTestClass.webserver_process.poll() is None:
-                os.kill(MyTestClass.webserver_process.pid, signal.SIGKILL)
-            time.sleep(0.1)
-
-        MyTestClass.webserver_process = None
+WEBSITE_IP = "http://localhost"
+WEBSITE_PORT = random.randint(2000, 65_535)
+WEBSITE_ADDRESS = f"{WEBSITE_IP}:{WEBSITE_PORT}"
+WEBSERVER_PROCESS: Optional[subprocess.Popen] = None
 
 
-class MyTestClass(MyBaseCase):
+# pylint: disable=W0613
+def setup_module(module):
+    # pylint: disable=W0603
+    global WEBSERVER_PROCESS
+    """
+    See https://docs.pytest.org/en/6.2.x/xunit_setup.html
+    """
+    time.sleep(0.5)
+    # WEBSERVER_PROCESS = subprocess.Popen(["npm", "run", "dev"])
+    # pylint: disable=R1732
+    MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve", "--port", f"{WEBSITE_PORT}"])
+    time.sleep(5)
+
+
+# pylint: disable=W0613
+def teardown_module(module):
+    # pylint: disable=W0603
+    global WEBSERVER_PROCESS
+    """ teardown any state that was previously setup with a call to
+    setup_class.
+    """
+    if WEBSERVER_PROCESS is not None:
+        time.sleep(0.1)
+        os.kill(WEBSERVER_PROCESS.pid, signal.SIGTERM)
+        time.sleep(0.1)
+        if WEBSERVER_PROCESS.poll() is None:
+            os.kill(WEBSERVER_PROCESS.pid, signal.SIGKILL)
+        time.sleep(0.1)
+
+    WEBSERVER_PROCESS = None
+
+
+class MyTestClass(BaseCase):
     def test_basic_site_display(self):
         """ Check if HOME site is visible """
         self.open(WEBSITE_ADDRESS)
@@ -92,7 +97,7 @@ class MyTestClass(MyBaseCase):
         self.assert_exact_text("xkcd.com", "h2")
 
 
-class MyBenchClass(MyBaseCase):
+class MyBenchClass(BaseCase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.benchmark: Optional[BenchmarkFixture] = None
