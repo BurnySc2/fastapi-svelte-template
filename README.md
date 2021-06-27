@@ -3,7 +3,7 @@
 # Requirement
 
 -   Python 3.7 or newer
--   Node.js
+-   Node.js 12+
 
 # Installation
 
@@ -70,11 +70,22 @@ poetry run pre-commit run --all-files
 This runs pylint, mypy, pytest tests, apply autoformatter yapf
 
 # Upgrade packages to latest major version
-`npx npm-check-updates -u`
+```
+npx npm-check-updates -u
+```
+Or run 
+```
+npm run update
+```
+To update versions, reinstall node_modules from scratch
 
 # Autoformatting
 
 ```
-npx prettier --write "src/**/*.{ts,tsx,svelte}"
+npx prettier --write "src/**/*.{json,ts,svelte}"
 yapf ./**/*.py -i
+```
+Or just 
+```
+npm run format
 ```

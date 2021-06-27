@@ -48,11 +48,11 @@ jobs:
               run: |
                   npm run test
 
-            - name: Python run pytest test backend
+            - name: Python test backend
               run: |
                   poetry run pytest test_backend
 
-            - name: Python run pytest test frontend
+            - name: Python test frontend
               run: |
                   poetry run pytest test_frontend --headless
 

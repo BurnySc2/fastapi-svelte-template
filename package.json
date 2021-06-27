@@ -7,9 +7,9 @@
         "dev": "concurrently \"webpack serve\" \"npm run tailwind:dev\"",
         "eslint": "npx eslint **/*.svelte --max-warnings 0",
         "test": "npx jest",
-        "ci": "start-server-and-test dev http://localhost:8080 e2e",
         "update": "npx npm-check-updates -u && npm run prune",
-        "prune": "rm node_modules -rf && rm package-lock.json -f && npm i"
+        "prune": "rm node_modules -rf && rm package-lock.json -f && npm i",
+        "format": "npx prettier --write \"src/**/*.{json,ts,svelte}\" && yapf ./**/*.py -i"
     },
     "scriptsComments": {
         "tailwind:dev": "Generate a index.css file which contains all tailwind.css classes",
@@ -18,9 +18,9 @@
         "dev": "Starts dev server and runs tailwind:dev concurrently",
         "eslint": "Run eslint, do not allow any warnings and errors",
         "test": "Run unit tests (all *.test.ts files)",
-        "ci": "Use start-server-and-test to start server and test",
         "update": "Update all packages to the next major version",
-        "prune": "Remove node_modules folder, package-lock.json and re-generate both from package.json"
+        "prune": "Remove node_modules folder, package-lock.json and re-generate both from package.json",
+        "format": "Format files according to .prettierrc (svelte, typescript, json) and .style.yapf (python)"
     },
     "browserslist": [
         "defaults"
@@ -65,7 +65,6 @@
         "npm-check-updates": "^11.7.1",
         "prettier": "^2.3.2",
         "prettier-plugin-svelte": "^2.3.1",
-        "start-server-and-test": "^1.12.5",
         "ts-jest": "^27.0.3"
     }
 }
