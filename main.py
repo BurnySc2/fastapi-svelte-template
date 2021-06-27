@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from loguru import logger
 
 import sqlite3
@@ -98,6 +99,16 @@ async def remove_todo(todo_id: int):
     if db:
         db.execute("DELETE FROM todos WHERE id==(?)", [todo_id])
         db.commit()
+
+
+@app.get("/files/bird")
+async def show_image():
+    """
+    Example of making a picture available
+    Same image which is available through
+    http://0.0.0.0:5000/static/puffin-5246026_1920.jpg
+    """
+    return FileResponse("backend/static/puffin-5246026_1920.jpg")
 
 
 create_database_if_not_exist()
