@@ -1,4 +1,8 @@
+import time
+
+
 def test_boolean():
+    time.sleep(0.1)
     assert True
 
 
