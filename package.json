@@ -6,7 +6,6 @@
         "build": "npm run eslint && svelte-check && npm run tailwind:prod && cross-env NODE_ENV=production webpack",
         "dev": "concurrently \"webpack serve\" \"npm run tailwind:dev\"",
         "eslint": "npx eslint **/*.svelte --max-warnings 0",
-        "e2e": "npx cypress run",
         "test": "npx jest",
         "ci": "start-server-and-test dev http://localhost:8080 e2e",
         "update": "npx npm-check-updates -u && npm run prune",
@@ -18,7 +17,6 @@
         "build": "Runs eslint (check for lint errors), run svelte-check (to check if there are typescript errors), generate the production tailwind.css file, finally use webpack to generate the static website in /build folder",
         "dev": "Starts dev server and runs tailwind:dev concurrently",
         "eslint": "Run eslint, do not allow any warnings and errors",
-        "e2e": "Run end to end frontend testing",
         "test": "Run unit tests (all *.test.ts files)",
         "ci": "Use start-server-and-test to start server and test",
         "update": "Update all packages to the next major version",
@@ -58,11 +56,9 @@
         "webpack-dev-server": "^3.11.2"
     },
     "devDependencies": {
-        "@cypress/webpack-preprocessor": "^5.9.1",
         "@types/jest": "^26.0.23",
         "@typescript-eslint/eslint-plugin": "^4.28.0",
         "@typescript-eslint/parser": "^4.28.0",
-        "cypress": "^7.6.0",
         "eslint": "^7.29.0",
         "eslint-plugin-svelte3": "^3.2.0",
         "jest": "^27.0.5",

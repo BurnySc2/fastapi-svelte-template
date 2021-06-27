@@ -12,9 +12,10 @@
 
 <main>
     <div class="my-2 flex flex-container justify-center">
-        <button class="mx-2 p-1 border-2" on:click={() => setUrl("/")}>Home</button>
-        <button class="mx-2 p-1 border-2" on:click={() => setUrl("/about")}>About</button>
-        <button class="mx-2 p-1 border-2" on:click={() => setUrl("/todo")}>Todo</button>
+        <button class="mx-2 p-1 border-2" id="home" on:click={() => setUrl("/")}>Home</button>
+        <button class="mx-2 p-1 border-2" id="about" on:click={() => setUrl("/about")}>About</button
+        >
+        <button class="mx-2 p-1 border-2" id="todo" on:click={() => setUrl("/todo")}>Todo</button>
     </div>
     {#if url === "/"}
         <Home />

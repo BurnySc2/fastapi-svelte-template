@@ -28,7 +28,7 @@ repos:
           name: pytest
           stages: [ commit ]
           language: system
-          entry: poetry run pytest test
+          entry: poetry run pytest test_backend
           pass_filenames: false
 
 #      - id: pytest-cov
