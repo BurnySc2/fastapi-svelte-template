@@ -22,10 +22,11 @@ class MyBaseCase(BaseCase):
         usually contains tests).
         See https://docs.pytest.org/en/6.2.x/xunit_setup.html
         """
+        time.sleep(0.5)
         # pylint: disable=R1732
         MyTestClass.webserver_process = subprocess.Popen(["npm", "run", "dev"])
         # MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve"])
-        time.sleep(30)
+        time.sleep(5)
 
     @classmethod
     def teardown_class(cls):
@@ -38,6 +39,7 @@ class MyBaseCase(BaseCase):
             time.sleep(0.1)
             if MyTestClass.webserver_process.poll() is None:
                 os.kill(MyTestClass.webserver_process.pid, signal.SIGKILL)
+            time.sleep(0.1)
 
         MyTestClass.webserver_process = None
 

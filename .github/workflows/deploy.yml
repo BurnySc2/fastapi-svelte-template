@@ -65,10 +65,12 @@ jobs:
                   poetry run pytest test_frontend --benchmark-skip --headless
 
             - name: Python output benchmark results
+              if: matrix.python-version == '3.9'
               run: |
                   poetry run pytest --benchmark-json output.json
 
             - name: Store benchmark result
+              if: matrix.python-version == '3.9'
               uses: rhysd/github-action-benchmark@v1
               with:
                 tool: 'pytest'
