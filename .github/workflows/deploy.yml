@@ -56,11 +56,11 @@ jobs:
 
             - name: Python test backend
               run: |
-                  poetry run pytest test_backend
+                  poetry run pytest test_backend --benchmark-skip
 
             - name: Python test frontend
               run: |
-                  poetry run pytest test_frontend --headless
+                  poetry run pytest test_frontend --benchmark-skip --headless
 
             - name: Python output benchmark results
               run: |
