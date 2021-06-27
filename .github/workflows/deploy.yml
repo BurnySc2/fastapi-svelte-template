@@ -79,10 +79,9 @@ jobs:
                 external-data-json-path: ./cache/benchmark-data.json
                 # GitHub API token to make a commit comment
                 github-token: ${{ secrets.GITHUB_TOKEN }}
-                # Enable alert commit comment
-                comment-on-alert: true
                 # Workflow will fail when an alert happens
-                fail-on-alert: false
+                fail-on-alert: true
+                comment-always: true
 
             - name: Build frontend
               run: |
