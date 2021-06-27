@@ -1,2 +1,6 @@
-def test_some_stuff():
+def test_boolean():
     assert True
+
+
+def test_boolean_benchmark(benchmark):
+    benchmark(test_boolean)

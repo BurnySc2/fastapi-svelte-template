@@ -35,6 +35,12 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-node-
 
+            - name: Download previous benchmark data
+              uses: actions/cache@v1
+              with:
+                path: ./cache
+                key: ${{ runner.os }}-${{ matrix.python-version }}-benchmark
+
             - name: Install Python dependencies
               run: |
                   python -m pip install poetry
@@ -55,6 +61,20 @@ jobs:
             - name: Python test frontend
               run: |
                   poetry run pytest test_frontend --headless
+
+            - name: Python output benchmark results
+              run: |
+                  poetry run pytest --benchmark-json output.json
+
+            - name: Store benchmark result
+              uses: rhysd/github-action-benchmark@v1
+              with:
+                tool: 'pytest'
+                output-file-path: output.json
+                # Where the previous data file is stored
+                external-data-json-path: ./cache/benchmark-data.json
+                # Workflow will fail when an alert happens
+                fail-on-alert: false
 
             - name: Build frontend
               run: |

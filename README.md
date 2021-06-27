@@ -24,6 +24,7 @@ npm install
 npm run dev
 poetry run uvicorn main:app --reload --host 0.0.0.0 --port 5000
 ```
+Then to go http://localhost:8080 to preview the page
 
 # Deploy
 
@@ -58,8 +59,25 @@ poetry run uvicorn main:app --host 0.0.0.0 --port 5000
 [ ] Use cookies to store login? https://sanic.readthedocs.io/en/latest/sanic/cookies.html
 
 # Tests
+Run backend tests via
+```
+poetry run pytest test_backend
+```
+and Javascript unit tests via 
+```
+npm run test
+```
 
-[ ] How to test a webserver?
+[x] How to test a webserver?
+Run frontend tests via 
+```
+poetry run pytest test_frontend
+```
+You can benchmark tests with 
+```
+poetry run pytest test_backend --benchmark-compare
+poetry run pytest test_frontend --benchmark-compare
+```
 
 # Install and run all pre-commit hook scripts
 ```py
