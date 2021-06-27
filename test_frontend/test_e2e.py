@@ -25,7 +25,7 @@ class MyBaseCase(BaseCase):
         # pylint: disable=R1732
         MyTestClass.webserver_process = subprocess.Popen(["npm", "run", "dev"])
         # MyTestClass.webserver_process = subprocess.Popen(["npx", "webpack", "serve"])
-        time.sleep(5)
+        time.sleep(30)
 
     @classmethod
     def teardown_class(cls):

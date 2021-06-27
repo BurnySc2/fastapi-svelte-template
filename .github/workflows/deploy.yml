@@ -23,12 +23,14 @@ jobs:
               with:
                   python-version: ${{ matrix.python-version }}
 
-            - uses: actions/cache@v2
+            - name: Cache poetry packages
+              uses: actions/cache@v2
               with:
                   path: ~/.cache/pypoetry/virtualenvs
                   key: ${{ runner.os }}-${{ matrix.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
 
-            - uses: actions/cache@v1
+            - name: Cache node packages
+              uses: actions/cache@v1
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-${{ matrix.node }}-node-${{ hashFiles('**/package-lock.json') }}
