@@ -59,9 +59,9 @@ poetry run uvicorn main:app --host 0.0.0.0 --port 5000
 [ ] Use cookies to store login? https://sanic.readthedocs.io/en/latest/sanic/cookies.html
 
 # Tests
-Run backend tests via
+Run python backend tests via
 ```
-poetry run pytest test_backend
+poetry run pytest test_backend --benchmark-skip
 ```
 and Javascript unit tests via 
 ```
@@ -71,12 +71,13 @@ npm run test
 [x] How to test a webserver?
 Run frontend tests via 
 ```
-poetry run pytest test_frontend
+poetry run pytest test_frontend --benchmark-skip --headless
 ```
+
 You can benchmark tests with 
 ```
-poetry run pytest test_backend --benchmark-compare
-poetry run pytest test_frontend --benchmark-compare
+poetry run pytest test_backend --benchmark-only
+poetry run pytest test_frontend --benchmark-only
 ```
 
 # Install and run all pre-commit hook scripts
@@ -95,7 +96,7 @@ Or run
 ```
 npm run update
 ```
-To update versions, reinstall node_modules from scratch
+to update versions, reinstall node_modules from scratch
 
 # Autoformatting
 

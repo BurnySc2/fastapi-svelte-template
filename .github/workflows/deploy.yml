@@ -67,7 +67,7 @@ jobs:
             - name: Python output benchmark results
               if: matrix.python-version == '3.9'
               run: |
-                  poetry run pytest --benchmark-json output.json
+                  poetry run pytest --benchmark-only --headless --benchmark-json output.json
 
             - name: Store benchmark result
               if: matrix.python-version == '3.9'
