@@ -12,7 +12,7 @@ import pytest
 import random
 
 WEBSITE_IP = "http://localhost"
-WEBSITE_PORT = f"{random.randint(2000, 65_535)}"
+WEBSITE_PORT = f"{random.randint(10_000, 65_535)}"
 WEBSITE_ADDRESS = f"{WEBSITE_IP}:{WEBSITE_PORT}"
 WEBSERVER_PROCESS: Optional[subprocess.Popen] = None
 
@@ -58,7 +58,6 @@ class MyTestClass(BaseCase):
     def test_shows_todos(self):
         """ Check if the to-do site is visible """
         self.open(WEBSITE_ADDRESS)
-        self.assert_text("Hello world!")
         self.click("#todo")
         self.assert_text("Unable to connect to server")
 

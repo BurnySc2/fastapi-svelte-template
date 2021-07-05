@@ -5,7 +5,6 @@
     import NormalChat from "./components/NormalChat.svelte"
 
     let url = "/"
-    url = "/chat"
 
     const setUrl = (newUrl: string) => {
         url = newUrl

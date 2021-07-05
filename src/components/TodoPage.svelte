@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte"
+    import Card from "./Card.svelte"
 
     let newTodoText = ""
     let cards: { id: number; content: string }[] = [{ id: 0, content: "some todo text" }]
