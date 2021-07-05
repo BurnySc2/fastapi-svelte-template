@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sanic-template"
+name = "fastapi-svelte-template"
 version = "0.1.0"
 description = ""
 authors = ["BuRny <gamingburny@gmail.com>"]
@@ -10,9 +10,9 @@ loguru = "^0.5.3"
 fastapi = "^0.65.2"
 uvicorn = {extras = ["standard"], version = "^0.13.4"}
 aiofiles = "^0.7.0"
+dataclasses-json = "^0.5.4"
 
 [tool.poetry.dev-dependencies]
-black = "^20.8b1"
 pre-commit = "^2.13.0"
 mypy = "^0.902"
 yapf = "^0.31.0"

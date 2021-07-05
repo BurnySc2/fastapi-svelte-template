@@ -42,6 +42,7 @@
         "css-loader": "^5.2.6",
         "css-minimizer-webpack-plugin": "^3.0.2",
         "mini-css-extract-plugin": "^1.6.1",
+        "moment": "^2.29.1",
         "serve": "^12.0.0",
         "svelte": "^3.38.3",
         "svelte-check": "^2.2.0",

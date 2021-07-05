@@ -1,9 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte"
-    import Card from "./Card.svelte"
 
-    export let defaultText: string = "this text"
-    let someText = defaultText
     let newTodoText = ""
     let cards: { id: number; content: string }[] = [{ id: 0, content: "some todo text" }]
     let APIserverIsResponding = true
@@ -118,13 +115,6 @@
 </script>
 
 <main class="flex flex-col items-center">
-    <button
-        on:click={() => {
-            someText = someText === defaultText ? "is changing" : defaultText
-        }}
-    >
-        Click me: {someText}
-    </button>
     <div class="flex">
         <input
             id="newTodoInput"

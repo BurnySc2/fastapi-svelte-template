@@ -81,7 +81,7 @@ poetry run pytest test_frontend --benchmark-only
 ```
 
 # Install and run all pre-commit hook scripts
-```py
+```
 poetry run pre-commit install
 poetry run pre-commit run --all-files
 ```
