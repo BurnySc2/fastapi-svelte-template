@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from dataclasses_json import DataClassJsonMixin
 
 import uvicorn
-from fastapi import FastAPI, Request, WebSocket
+from fastapi import FastAPI, Request, WebSocket, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -41,7 +41,9 @@ app.add_middleware(
 
 
 @app.get("/")
-def hello_world():
+def hello_world(response: Response):
+    # Set a cookie in the browser
+    response.set_cookie("hello", "this is my coookie", expires=24 * 60 * 60)
     return {"Hello": "World"}
 
 
