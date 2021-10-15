@@ -1,31 +1,31 @@
 {
-	"include": ["src/**/*", "webpack.config.ts"],
-	"exclude": ["node_modules/*", "__sapper__/*", "public/*"],
 	"compilerOptions": {
-		"target": "es5",
-        "allowJs": true,
-        "skipLibCheck": true,
-		"esModuleInterop": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
 		"moduleResolution": "node",
-        "resolveJsonModule": true,
+		"module": "es2020",
+		"lib": ["es2020", "DOM"],
+		"target": "es2020",
+		/**
+			svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
+			to enforce using \`import type\` instead of \`import\` for Types.
+			*/
+		"importsNotUsedAsValues": "error",
 		"isolatedModules": true,
-        "downlevelIteration": true,
-		"paths": {
-			"src/*": ["src/*"]
-		},
-		"importsNotUsedAsValues": "remove",
+		"resolveJsonModule": true,
+		/**
+			To have warnings/errors of the Svelte compiler at the correct position,
+			enable source maps by default.
+			*/
 		"sourceMap": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
 		"baseUrl": ".",
-		"types": [
-			"jest",
-			"svelte",
-			"svelte/store",
-			"svelte/motion",
-			"svelte/transition",
-			"svelte/animate",
-			"svelte/easing"
-		]
-	}
+		"allowJs": true,
+		"checkJs": true,
+		"paths": {
+			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"]
+		}
+	},
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }

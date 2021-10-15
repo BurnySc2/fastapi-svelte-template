@@ -37,11 +37,11 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-node-
 
-            - name: Download previous benchmark data
-              uses: actions/cache@v1
-              with:
-                path: ./cache
-                key: ${{ runner.os }}-${{ matrix.python-version }}-benchmark
+            # - name: Download previous benchmark data
+            #   uses: actions/cache@v1
+            #   with:
+            #     path: ./cache
+            #     key: ${{ runner.os }}-${{ matrix.python-version }}-benchmark
 
             - name: Install Python dependencies
               run: |
@@ -52,36 +52,36 @@ jobs:
               run: |
                   npm install
 
-            - name: npm run unit tests
-              run: |
-                  npm run test
+            # - name: npm run unit tests
+            #   run: |
+            #       npm run test
 
-            - name: Python test backend
-              run: |
-                  poetry run pytest test_backend --benchmark-skip
+            # - name: Python test backend
+            #   run: |
+            #       poetry run pytest test_backend --benchmark-skip
 
-            - name: Python test frontend
-              run: |
-                  poetry run pytest test_frontend --benchmark-skip --headless
+            # - name: Python test frontend
+            #   run: |
+            #       poetry run pytest test_frontend --benchmark-skip --headless
 
-            - name: Python output benchmark results
-              if: matrix.python-version == '3.9'
-              run: |
-                  poetry run pytest --benchmark-only --headless --benchmark-json output.json
+            # - name: Python output benchmark results
+            #   if: matrix.python-version == '3.9'
+            #   run: |
+            #       poetry run pytest --benchmark-only --headless --benchmark-json output.json
 
-            - name: Store benchmark result
-              if: matrix.python-version == '3.9'
-              uses: rhysd/github-action-benchmark@v1
-              with:
-                tool: 'pytest'
-                output-file-path: output.json
-                # Where the previous data file is stored
-                external-data-json-path: ./cache/benchmark-data.json
-                # GitHub API token to make a commit comment
-                github-token: ${{ secrets.GITHUB_TOKEN }}
-                # Workflow will fail when an alert happens
-                fail-on-alert: true
-                comment-always: true
+            # - name: Store benchmark result
+            #   if: matrix.python-version == '3.9'
+            #   uses: rhysd/github-action-benchmark@v1
+            #   with:
+            #     tool: 'pytest'
+            #     output-file-path: output.json
+            #     # Where the previous data file is stored
+            #     external-data-json-path: ./cache/benchmark-data.json
+            #     # GitHub API token to make a commit comment
+            #     github-token: ${{ secrets.GITHUB_TOKEN }}
+            #     # Workflow will fail when an alert happens
+            #     fail-on-alert: true
+            #     comment-always: true
 
             - name: Build frontend
               run: |
@@ -94,4 +94,4 @@ jobs:
                   ACCESS_TOKEN: ${{ secrets.GITHUB_PAGES_TOKEN }}
                   BASE_BRANCH: master # The branch the action should deploy from.
                   BRANCH: gh-pages # The branch the action should deploy to.
-                  FOLDER: public # The folder the action should deploy.
+                  FOLDER: build # The folder the action should deploy.

@@ -159,6 +159,7 @@ yarn-error.log*
 .vscode
 .idea
 /data
+.svelte-kit
 
 public/index.css
 

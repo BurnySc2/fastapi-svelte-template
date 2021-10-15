@@ -24,12 +24,12 @@ repos:
           types: [python]
           pass_filenames: false
 
-        - id: pytest
-          name: pytest
-          stages: [ commit ]
-          language: system
-          entry: poetry run pytest test_backend --benchmark-skip
-          pass_filenames: false
+        # - id: pytest
+        #   name: pytest
+        #   stages: [ commit ]
+        #   language: system
+        #   entry: poetry run pytest test_backend --benchmark-skip
+        #   pass_filenames: false
 
 #      - id: pytest-cov
 #        name: pytest
