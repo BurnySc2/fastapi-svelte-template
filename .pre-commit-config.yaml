@@ -1,36 +1,35 @@
 repos:
-  - repo: local
-    hooks:
-        - id: pylint
-          name: pylint
-          stages: [ commit ]
-          language: system
-          entry: poetry run pylint
-          types: [ python ]
+    - repo: local
+      hooks:
+          - id: pylint
+            name: pylint
+            stages: [commit]
+            language: system
+            entry: poetry run pylint
+            types: [python]
 
-        - id: yapf
-          name: yapf
-          stages: [ commit ]
-          language: system
-          entry: poetry run yapf -i
-          types: [ python ]
-          exclude: setup.py
+          - id: yapf
+            name: yapf
+            stages: [commit]
+            language: system
+            entry: poetry run yapf -i
+            types: [python]
+            exclude: setup.py
 
-        - id: mypy
-          name: mypy
-          stages: [ commit ]
-          language: system
-          entry: poetry run mypy . --ignore-missing-imports
-          types: [python]
-          pass_filenames: false
+          - id: mypy
+            name: mypy
+            stages: [commit]
+            language: system
+            entry: poetry run mypy . --ignore-missing-imports
+            types: [python]
+            pass_filenames: false
 
-        # - id: pytest
-        #   name: pytest
-        #   stages: [ commit ]
-        #   language: system
-        #   entry: poetry run pytest test_backend --benchmark-skip
-        #   pass_filenames: false
-
+          # - id: pytest
+          #   name: pytest
+          #   stages: [ commit ]
+          #   language: system
+          #   entry: poetry run pytest test_backend --benchmark-skip
+          #   pass_filenames: false
 #      - id: pytest-cov
 #        name: pytest
 #        stages: [push]

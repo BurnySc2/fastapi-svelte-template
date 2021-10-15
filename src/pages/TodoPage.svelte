@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { onMount } from "svelte"
-    import TodoCard from "../components/TodoCard.svelte"
+    import { onMount } from 'svelte'
+    import TodoCard from '../components/TodoCard.svelte'
 
-    let newTodoText = ""
-    let cards: { id: number; content: string }[] = [{ id: 0, content: "some todo text" }]
+    let newTodoText = ''
+    let cards: { id: number; content: string }[] = [{ id: 0, content: 'some todo text' }]
     let APIserverIsResponding = true
 
-    const api_server_ip = "http://localhost:5000"
+    const api_server_ip = 'http://localhost:5000'
 
     onMount(async () => {
         // console.log("Loading todos")
@@ -60,12 +60,12 @@
          */
         try {
             await fetch(`${api_server_ip}/api/${newTodoText}`, {
-                method: "POST",
+                method: 'POST'
             })
         } catch {
             localSubmit()
         }
-        newTodoText = ""
+        newTodoText = ''
         await getTodos()
     }
 
@@ -73,16 +73,16 @@
         // When using request body:
         try {
             const requestOptions = {
-                method: "POST",
+                method: 'POST',
                 body: JSON.stringify({
-                    new_todo: newTodoText,
-                }),
+                    new_todo: newTodoText
+                })
             }
             await fetch(`${api_server_ip}/api_body`, requestOptions)
         } catch {
             localSubmit()
         }
-        newTodoText = ""
+        newTodoText = ''
         await getTodos()
     }
 
@@ -90,23 +90,23 @@
         // When using request body:
         try {
             const requestOptions = {
-                method: "POST",
+                method: 'POST',
                 body: JSON.stringify({
-                    todo_description: newTodoText,
-                }),
+                    todo_description: newTodoText
+                })
             }
             await fetch(`${api_server_ip}/api_model`, requestOptions)
         } catch {
             localSubmit()
         }
-        newTodoText = ""
+        newTodoText = ''
         await getTodos()
     }
 
     const removeTodo = async (id: number) => {
         try {
             await fetch(`${api_server_ip}/api/${id}`, {
-                method: "DELETE",
+                method: 'DELETE'
             })
         } catch {
             localRemove(id)
@@ -125,12 +125,8 @@
             placeholder="My new todo item"
         />
         <button class="rounded my2 mx1" id="submit1" on:click={submitPressed}>Submit</button>
-        <button class="rounded my2 mx1" id="submit2" on:click={submitPressedBody}
-            >SubmitBody</button
-        >
-        <button class="rounded my2 mx1" id="submit3" on:click={submitPressedModel}
-            >SubmitModel</button
-        >
+        <button class="rounded my2 mx1" id="submit2" on:click={submitPressedBody}>SubmitBody</button>
+        <button class="rounded my2 mx1" id="submit3" on:click={submitPressedModel}>SubmitModel</button>
     </div>
     {#if !APIserverIsResponding}
         <div class="bg-red-300 rounded p1">Unable to connect to server - running local mode</div>

@@ -1,6 +1,6 @@
 <script lang="ts">
     export let index = 0
-    export let cardText = "Some default text"
+    export let cardText = 'Some default text'
     export let removeTodo: (index: number) => void
 </script>
 
