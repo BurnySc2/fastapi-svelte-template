@@ -140,25 +140,25 @@
 
 {#if userName === ''}
 	<!-- Before connection -->
-	<div class="flex flex-col m-2 border border-2 border-black items-center">
+	<div class="flex flex-column m2 rounded items-center">
 		<div>Connect to chat</div>
 		{#if waitingForUserNameResponse === ''}
-			<input type="text" placeholder="Username" class="border" bind:value={selectedUserName} />
+			<input type="text" placeholder="Username" class="rounded" bind:value={selectedUserName} />
 		{:else}
 			<input
 				type="text"
 				placeholder="Username"
-				class="border"
+				class="rounded"
 				readonly
 				bind:value={waitingForUserNameResponse}
 			/>
 		{/if}
-		<button on:click={tryToConnectUser} class="border-2 border-black p-1">Connect</button>
+		<button on:click={tryToConnectUser} class="rounded p1">Connect</button>
 		<div>{errorMessage}</div>
 	</div>
 {:else}
 	<!-- Connected -->
-	<div class="flex flex-col">
+	<div class="flex flex-column">
 		<div id="Chat box" class="grid grid-cols-10 overflow-y-auto">
 			<!-- Messages sent by everyone -->
 			{#each messages as message}

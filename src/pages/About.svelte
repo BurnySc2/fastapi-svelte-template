@@ -7,6 +7,7 @@
     This is my about page! Here I display features of svelte that I have implemented
 </h1>
 <button
+class="p1 rounded"
     on:click={() => {
         someText = someText === defaultText ? "is changing" : defaultText
     }}

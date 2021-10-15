@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte"
-    import Card from "./Card.svelte"
+    import TodoCard from "../components/TodoCard.svelte"
 
     let newTodoText = ""
     let cards: { id: number; content: string }[] = [{ id: 0, content: "some todo text" }]
@@ -115,31 +115,31 @@
     }
 </script>
 
-<main class="flex flex-col items-center">
+<main class="flex flex-column items-center">
     <div class="flex">
         <input
             id="newTodoInput"
-            class="border-2 my-2 mx-1"
+            class="rounded my2 mx1"
             type="text"
             bind:value={newTodoText}
             placeholder="My new todo item"
         />
-        <button class="border-2 my-2 mx-1" id="submit1" on:click={submitPressed}>Submit</button>
-        <button class="border-2 my-2 mx-1" id="submit2" on:click={submitPressedBody}
+        <button class="rounded my2 mx1" id="submit1" on:click={submitPressed}>Submit</button>
+        <button class="rounded my2 mx1" id="submit2" on:click={submitPressedBody}
             >SubmitBody</button
         >
-        <button class="border-2 my-2 mx-1" id="submit3" on:click={submitPressedModel}
+        <button class="rounded my2 mx1" id="submit3" on:click={submitPressedModel}
             >SubmitModel</button
         >
     </div>
     {#if !APIserverIsResponding}
-        <div class="bg-red-300 rounded p-1">Unable to connect to server - running local mode</div>
+        <div class="bg-red-300 rounded p1">Unable to connect to server - running local mode</div>
     {/if}
     {#each cards as { id, content }, _i}
-        <Card cardText={content} index={id} {removeTodo} />
+        <TodoCard cardText={content} index={id} {removeTodo} />
     {/each}
     <!-- Same as above -->
     <!-- {#each cards as card, i}
-        <Card cardText={card.content} index={card.id} {removeTodo} />
+        <TodoCard cardText={card.content} index={card.id} {removeTodo} />
     {/each} -->
 </main>
