@@ -8,6 +8,11 @@
     let url = ''
     let hash = ''
 
+    onMount(() => {
+        hash = location.hash
+        url = hash.slice(1)
+    })
+
     const setUrl = (newUrl: string) => {
         if (url !== newUrl) {
             url = newUrl
@@ -16,11 +21,6 @@
             window.history.pushState({}, '', `/${hash}`)
         }
     }
-
-    onMount(() => {
-        hash = location.hash
-        url = hash.slice(1)
-    })
 </script>
 
 <main>
