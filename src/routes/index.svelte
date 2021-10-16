@@ -3,12 +3,24 @@
     import Home from '../pages/Home.svelte'
     import About from '../pages/About.svelte'
     import NormalChat from '../pages/NormalChat.svelte'
+    import { onMount } from 'svelte'
 
-    let url = '/'
+    let url = ''
+    let hash = ''
 
     const setUrl = (newUrl: string) => {
-        url = newUrl
+        if (url !== newUrl) {
+            url = newUrl
+            hash = `#${newUrl}`
+            // window.history.replaceState({}, '','/#/about');
+            window.history.pushState({}, '', `/${hash}`)
+        }
     }
+
+    onMount(() => {
+        hash = location.hash
+        url = hash.slice(1)
+    })
 </script>
 
 <main>
@@ -26,5 +38,9 @@
         <NormalChat />
     {:else if url === '/todo'}
         <TodoPage />
+    {:else if url === ''}
+        <div>Loading...</div>
+    {:else}
+        <div>You seem to be lost!</div>
     {/if}
 </main>
