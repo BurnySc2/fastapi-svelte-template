@@ -6,7 +6,7 @@
     import BrowserStorage from '../pages/BrowserStorage.svelte'
     import { onMount } from 'svelte'
     import { dev } from '$app/env'
-    
+
     const PATH = dev ? '' : '/fastapi-svelte-template'
     let url = ''
     let hash = ''
@@ -35,7 +35,9 @@
         <button class="m1 p1 rounded" id="about" on:click={() => setUrl('/about')}>About</button>
         <button class="m1 p1 rounded" id="chat" on:click={() => setUrl('/chat')}>Chat</button>
         <button class="m1 p1 rounded" id="todo" on:click={() => setUrl('/todo')}>Todo</button>
-        <button class="m1 p1 rounded" id="browserstorage" on:click={() => setUrl('/browserstorage')}>BrowserStorage</button>
+        <button class="m1 p1 rounded" id="browserstorage" on:click={() => setUrl('/browserstorage')}
+            >BrowserStorage</button
+        >
     </div>
     {#if url === '/'}
         <Home />
