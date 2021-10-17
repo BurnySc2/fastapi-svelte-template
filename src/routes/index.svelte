@@ -3,18 +3,18 @@
     import Home from '../pages/Home.svelte'
     import About from '../pages/About.svelte'
     import NormalChat from '../pages/NormalChat.svelte'
+    import BrowserStorage from '../pages/BrowserStorage.svelte'
     import { onMount } from 'svelte'
-    import { dev } from '$app/env';
-    let PATH = dev ? '' : '/fastapi-svelte-template'
-
-
+    import { dev } from '$app/env'
+    
+    const PATH = dev ? '' : '/fastapi-svelte-template'
     let url = ''
     let hash = ''
 
     onMount(() => {
         hash = location.hash
         url = hash.slice(1)
-        if (url === "") {
+        if (url === '') {
             setUrl(url)
         }
     })
@@ -35,6 +35,7 @@
         <button class="m1 p1 rounded" id="about" on:click={() => setUrl('/about')}>About</button>
         <button class="m1 p1 rounded" id="chat" on:click={() => setUrl('/chat')}>Chat</button>
         <button class="m1 p1 rounded" id="todo" on:click={() => setUrl('/todo')}>Todo</button>
+        <button class="m1 p1 rounded" id="browserstorage" on:click={() => setUrl('/browserstorage')}>BrowserStorage</button>
     </div>
     {#if url === '/'}
         <Home />
@@ -44,6 +45,8 @@
         <NormalChat />
     {:else if url === '/todo'}
         <TodoPage />
+    {:else if url === '/browserstorage'}
+        <BrowserStorage />
     {:else if url === ''}
         <div>Loading...</div>
     {:else}
