@@ -18,7 +18,7 @@
             url = newUrl
             hash = `#${newUrl}`
             // window.history.replaceState({}, '','/#/about');
-            window.history.pushState({}, '', `/${hash}`)
+            window.history.pushState({}, '', `/fastapi-svelte-template/${hash}`)
         }
     }
 </script>
