@@ -11,12 +11,15 @@
     onMount(() => {
         hash = location.hash
         url = hash.slice(1)
+        console.log(window);
+        console.log(location);
     })
 
     const setUrl = (newUrl: string) => {
         if (url !== newUrl) {
             url = newUrl
             hash = `#${newUrl}`
+            // TODO refactor project url to env variable?
             // window.history.replaceState({}, '','/#/about');
             window.history.pushState({}, '', `/fastapi-svelte-template/${hash}`)
         }
