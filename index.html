@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet" />
+        
+
+		
+
+		<link rel="modulepreload" href="/fastapi-svelte-template/internal/start-7c7e7639.js">
+		<link rel="modulepreload" href="/fastapi-svelte-template/internal/chunks/vendor-26730352.js">
+		<link rel="modulepreload" href="/fastapi-svelte-template/internal/layout.svelte-941e843c.js">
+		<link rel="modulepreload" href="/fastapi-svelte-template/internal/pages/index.svelte-7ae6d0c4.js">
+		<link rel="stylesheet" href="/fastapi-svelte-template/internal/assets/start-61d1577b.css">
+
+		<script type="module">
+			import { start } from "/fastapi-svelte-template/internal/start-7c7e7639.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"/fastapi-svelte-template","assets":""},
+				session: {},
+				host: location.host,
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/fastapi-svelte-template/internal/layout.svelte-941e843c.js"),
+						import("/fastapi-svelte-template/internal/pages/index.svelte-7ae6d0c4.js")
+					],
+					page: {
+						host: location.host, // TODO this is redundant
+						path: "\u002F",
+						query: new URLSearchParams(""),
+						params: {}
+					}
+				}
+			});
+		</script>
+    </head>
+    <body>
+        <div id="svelte">
+
+
+<main><div class="my2 flex justify-center"><button class="m1 p1 rounded" id="home">Home</button>
+        <button class="m1 p1 rounded" id="about">About</button>
+        <button class="m1 p1 rounded" id="chat">Chat</button>
+        <button class="m1 p1 rounded" id="todo">Todo</button>
+        <button class="m1 p1 rounded" id="browserstorage">BrowserStorage</button></div>
+    <div>Loading...</div></main>
+
+
+
+			
+		</div>
+    </body>
+</html>
