@@ -4,13 +4,12 @@
     import About from '../pages/About.svelte'
     import NormalChat from '../pages/NormalChat.svelte'
     import { onMount } from 'svelte'
-    // import { dev } from '$app/env';
-    import { base } from '$app/paths';
+    import { dev } from '$app/env';
+    let PATH = dev ? '' : '/fastapi-svelte-template'
 
 
     let url = ''
     let hash = ''
-    // let PATH = dev ? '' : '/fastapi-svelte-template'
 
     onMount(() => {
         hash = location.hash
@@ -25,7 +24,7 @@
             url = newUrl
             hash = `#${newUrl}`
             // window.history.replaceState({}, '',`${PATH}/${hash}`)
-            window.history.pushState({}, '', `${base}/${hash}`)
+            window.history.pushState({}, '', `${PATH}/${hash}`)
         }
     }
 </script>
